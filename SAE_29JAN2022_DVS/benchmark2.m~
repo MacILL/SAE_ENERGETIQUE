@@ -20,10 +20,7 @@ H=deperdition_totale(Em,Ep,Es,lambda_m,lambda_p,lambda_s,fen_sud,fen_nord,fen_ou
 % déperdition par heure
 Ql= perte_horaire(Temperature_par_heure,H,Tint);
 
-IrrN=[IrrN, IrrN(23)]
-IrrS=[IrrS, IrrS(23)]
-IrrO=[IrrO, IrrO(23)]
-IrrE=[IrrE, IrrE(23)]
+IrrN=[IrrN, IrrN()]
 %Les apports (interne et solaire)
 Qg=apport_horaire(Gint,Ach,IrrN, AsN, IrrS, AsS, IrrO, AsO, IrrE, AsE, Fs);
 

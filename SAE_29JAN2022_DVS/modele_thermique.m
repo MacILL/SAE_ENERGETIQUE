@@ -1,4 +1,4 @@
-function [Consommation_energetique] = modele_thermique(Sommets_batiment, Triangles_batiment, Sommets_scene_Part_Dieu, Triangles_scene_Part_Dieu, chem, fen_sud,fen_nord,fen_ouest,fen_est)
+function [Consommation_energetique] = modele_thermique(matObstacle,Sommets_batiment, TBatType, Sommets_scene_Part_Dieu, Triangles_scene_Part_Dieu, chem, fen_sud,fen_nord,fen_ouest,fen_est)
 % fonction qui affiche la consommation thermique
 %Paramètres d'entrée
 %Paramètres de sortie:
@@ -9,7 +9,7 @@ function [Consommation_energetique] = modele_thermique(Sommets_batiment, Triangl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-[IrrS, IrrE,IrrN, IrrO]=Irradiation_calibree_24(Triangles_batiment,Sommets_batiment,Triangles_scene_Part_Dieu,Sommets_scene_Part_Dieu,chem);
+[IrrS, IrrE,IrrN, IrrO]=Irradiation_calibree_24(matObstacle,TBatType,Sommets_batiment,Triangles_scene_Part_Dieu,Sommets_scene_Part_Dieu,chem);
 
 
 %[IrrS, IrrE,IrrN, IrrO]=Irradiation_calibree_24(Triangles_batiment,Sommets_batiment,Triangles_scene_Part_Dieu,Sommets_scene_Part_Dieu);

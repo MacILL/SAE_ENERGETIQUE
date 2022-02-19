@@ -3,9 +3,9 @@
 %global matObstacle
 %clear all;
 close all;
-chemMat='../MATOBSTACLES/matObstacle15AOUT2020.txt'
+chemMat='../MATOBSTACLEmatObstacle15JUIL2020.txt'
  matObstacle=importdata(chemMat);
-chem='../CalculMatriceObstacle/vlx20/vlx20QC_8_15012020.txt'; 
+chem='vlx20QC_1_22012020.txt'; 
 configuration_part_dieu
 configuration_batiment
 configuration_scene

@@ -14,7 +14,7 @@ Vsol=[100 100];
 
 %l'aire minimale d'un triangle pour la tesselation
 %aire_min_bat=0.05;
-aire_min_bat=10;
+aire_min_bat=250;
 aire_min_sol=150;
 
 

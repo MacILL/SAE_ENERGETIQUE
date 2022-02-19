@@ -1,4 +1,4 @@
-function [Irradiation]=irradiation(calib, Eed, pos_soleil, T, S, ind_triangle, FLAG_DEBUG,TBat,SBat)
+function [Irradiation]=irradiation(min_conf, ind_heures_conf, matObstacle, calib, Eed, pos_soleil, T, S, ind_triangle, FLAG_DEBUG,TBat,SBat)
 
 %[E_calib]=irradiation(calib, Eed, pos_soleil, T, S, ind_triangle)
 % fonction qui calcule l'irradiation d'un triangle
@@ -34,24 +34,27 @@ if(FLAG_DEBUG==1)
 end
 
 
-G=Centre_de_gravite(S1,S2,S3);
-for i=1:1:length(Eed)
-    if(matObstacle(ind_triangle,i)==0)
-    %si il n'y a pas d'intersection
-        if test==0
-            e=Calcul_eclairement(S1, S2, S3,pos_soleil(i,:));
-            if e < 0
-                Irradiation(i)=Eed(i);
-            else
-                Irradiation(i)=calib(i)*Calcul_eclairement(S1, S2, S3,pos_soleil(i,:))+Eed(i);
+    G=Centre_de_gravite(S1,S2,S3);
+    for i=1:1:length(ind_heures_conf)-1
+        if(matObstacle(ind_triangle,i)==0)
+            premiere_minute=min_conf(ind_heures_conf(i))
+            if(premiere_minute==0)
+                premiere_minute=1;
             end
-        else
-        Irradiation(i)=0; 
+        %si il n'y a pas d'intersection
+                e=Calcul_eclairement(S1, S2, S3,pos_soleil(premiere_minute,:));
+                if e < 0
+                    Irradiation(i)=Eed(premiere_minute);
+                else
+                    Irradiation(i)=calib(premiere_minute)*Calcul_eclairement(S1, S2, S3,pos_soleil(premiere_minute,:))+Eed(premiere_minute);
+                end
+            else
+            Irradiation(i)=0; 
+        end
     end
-end
-end
 
     if(FLAG_DEBUG==1)
     display('nb d elements de E_calib')
     display(length(Irradiation))
     end
+end
